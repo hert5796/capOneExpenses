@@ -12,7 +12,7 @@ We're a mix of students, some at Uni, others on a bootcamp, but we're all passio
 
 Our team members (in no particular order are):
 - Chioma
-- Vlad
+- [Vlad](https://github.com/noonereedus)
 - Micheal
 - Omid
 - Ahmed

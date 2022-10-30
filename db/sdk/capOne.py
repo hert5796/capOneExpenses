@@ -4,7 +4,7 @@ from json import dumps
 
 class CapOne(object):
     def __init__(self):
-        with open("/Users/aaron/code/htmt3/db/crd.txt", "r") as f:
+        with open("./db/crd.txt", "r") as f:
             self.TKN = f.read()
 
         self.headers = {

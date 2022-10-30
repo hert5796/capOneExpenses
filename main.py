@@ -1,5 +1,5 @@
-from flask import Flask, render_template
-from datetime import datetime, timedelta
+from flask import Flask, render_template, redirect
+
 from db.sdk.account import Account
 from db.sdk.transaction import Transaction
 from json import dumps
@@ -28,51 +28,25 @@ account, transaction = Account(), Transaction()
 @app.route('/')
 def default():
     ac_id = "01073771"
-    ac = account.get_account(ac_id)
-    tr = transaction.get_all_transactions(ac_id)
+    return redirect(f"/{ac_id}")
 
-    def relative_day(date):
-        day_map = {
-            0: "Monday",
-            1: "Tuesday",
-            2: "Wednesday",
-            3: "Thursday",
-            4: "Friday",
-            5: "Saturday",
-            6: "Sunday"
-        }
+@app.route('/<account_id>')
+def check(account_id):
+    ac = account.get_account(account_id)
 
-        if date == datetime.today().date():
-            return "Today"
-        elif date == datetime.today().date() - timedelta(days=1):
-            return "Yesterday"
-        else:
-            return day_map[date.weekday()] + ", " + date.strftime("%d %b %Y")
+    tr = transaction.get_all_transactions(account_id)
+    te, _ = transaction.top_expenses(tr)
 
+    tr = transaction.decorate_transactions(tr)
+    tr = transaction.sort_transactions(tr)
 
-    def decorate(transaction):
-        transaction['charges'] = format(float(transaction['amount']) * -1, '.2f')
-        transaction['datetime'] = datetime.strptime(transaction['timestamp'], "%Y-%m-%d %H:%M:%S")
-        transaction['time'] = transaction['datetime'].strftime("%H:%M")
-        transaction['relative_day']  = relative_day(transaction['datetime'].date())
-        transaction['summary'] = transaction['message'].split(" of ")[0]
+    te_labels = ", ".join([t['category'] for t in te])
+    te_amount = ", ".join([str(t['amount']) for t in te])
+    # te_values = [t[1] for t in te]
 
-        return transaction
-    tr = map(decorate, tr)
-    tr = sorted(tr, key=lambda x: x['datetime'], reverse=True)
+    print(te_labels)
 
-    # cluster transactions by day
-    tr_by_day = {}
-    for t in tr:
-        day = t['datetime'].strftime("%Y-%m-%d")
-        if day not in tr_by_day:
-            tr_by_day[day] = []
-        tr_by_day[day].append(t)
-    
-    # list transaction clusters by day
-    tr_by_day = sorted(tr_by_day.items(), key=lambda x: x[0], reverse=True)
-
-    return render_template('homepage.html', account=ac[0], transactions_by_day=tr_by_day)
+    return render_template('homepage.html', account=ac[0], transactions_by_day=tr, te_labels=te_labels, te_amount=te_amount)
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)
