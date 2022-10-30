@@ -22,7 +22,7 @@ Our team members (in no particular order are):
 - Aaron
 - Marcia
 
-## Communicate your spendings. Control your spendings. Listen to the CommonCents
+### Communicate your spendings. Control your spendings. Listen to the CommonCents
 
 ## Our idea
 Special thanks to Ahmed & Michael for spawning the idea that we've gone on to evolve. In short...
