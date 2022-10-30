@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" class="has-navbar-fixed-top">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <title>HTM-Table 3</title>
+</head>
+
+<body class="container">
+    <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://bulma.io">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Capital_One_logo.svg/2560px-Capital_One_logo.svg.png"
+                        alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" width="82" height="28">
+                </a>
+    
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- 3 columns -->
+    <div class="columns is-variable is-5 mt-4">
+        <div class="column">
+            <div class="" style="position: fixed;">
+                <div class="level mb-1">
+                    <div class="level-left">
+                        <div class="level-item">
+                            <p class="title is-3">{{ account['firstname'] }} {{ account['lastname'] }}</p>
+                        </div>
+                    </div>
+                    <div class="level-right">
+                        <div class="level-item">
+                            <p class="subtitle is-4">{{ account['accountId'] }}</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="subtitle mb-1 is-6">{{ account['homeAddress'] }}</div> -->
+                <!-- <div class="subtitle is-6 has-text-grey">{{ account['phoneNumber'] }}</div> -->
+                <div class="subtitle is-5 has-text-grey has-text-weight-light">{{ account['email'].lower() }}</div>
+
+                <!-- <div class="title mb-2 is-4 has-text-grey-light">Account</div>
+                <div class="columns">
+                    <div class="column">
+                        <p class="title">
+                            {{ account['productType'] }}
+                        </p>
+                    </div>
+                    <div class="column">
+                        <p class="title">
+                            {{ account['state'] }}
+                        </p>
+                    </div>
+                </div> -->
+
+                <div class="title mt-4 is-3 has-text-grey-light has-text-weight-light">This month</div>
+                <canvas id="myChart" width="400" height="400"></canvas>
+
+                <hr />
+
+                <div class="title mb-4 is-3 has-text-grey-light has-text-weight-light">Credit</div>
+                <div class="columns">
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-content p-3">
+                                <div class="title mb-2 is-3 has-text-grey-light has-text-weight-light">
+                                    ✋
+                                </div>
+                                <div class="title mb-2 is-4 has- has-text-grey-light has-text-weight-light">
+                                    Limit
+                                </div>
+                                <div class="title">
+                                    {{ account['creditLimit'] }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-content p-3">
+                                <div class="title mb-2 is-3 has-text-grey-light has-text-weight-light">
+                                    ✍️
+                                </div>
+                                <div class="title mb-2 is-4 has- has-text-grey-light has-text-weight-light">
+                                    Score
+                                </div>
+                                <div class="title">
+                                    {{ account['creditScore'] }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-content p-3">
+                                <div class="title mb-2 is-3 has-text-grey-light has-text-weight-light">
+                                    🫣
+                                </div>
+                                <div class="title mb-2 is-4 has- has-text-grey-light has-text-weight-light">
+                                    Risk
+                                </div>
+                                <div class="title">
+                                    {{ account['riskScore'] }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            {% for day, transactions in transactions_by_day %}
+            <div class="title is-4 has-text-grey-light has-text-weight-light">
+                {{ transactions[0]['relative_day'] }}
+            </div>
+            {% for transaction in transactions %}
+            <div class="card mb-5">
+                <div class="card-content">
+                    <div class="content">
+                        <nav class="level w-100">
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <p class="block title is-5">
+                                        {{ transaction['merchant']['name'] }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="level-right">
+                                <div class="level-item">
+                                    <p class="title is-5">
+                                        {{ transaction['charges'] }}
+                                        <span class="title is-7">
+                                            {{ transaction['currency'] }}
+                                        </span>
+                                    </p>
+
+                                </div>
+                            </div>
+                        </nav>
+                        <p class="subtitle is-6 has-text-weight-light">
+                            {{ transaction['summary'] }}
+                        </p>
+                    </div>
+
+                </div>
+                <footer class="card-footer">
+                    <div class="card-footer-item level">
+                        <div class="level-left">
+                            {% if transaction['pointOfSale'] == 'Online' %}
+                            <div class="level-item tag is-light">
+                                {{ transaction['pointOfSale'] }}
+                            </div>
+                            {% else %}
+                            <div class="level-item tag is-dark">
+                                {{ transaction['pointOfSale'] }}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="level-right">
+                            <div class="level-item">
+                                <p class="subtitle is-6">
+                                    {{ transaction['time'] }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </div>
+        <div class="column">
+            Third column
+        </div>
+    </div>
+
+    <script>
+        const data = {
+            labels: [
+                'Food',
+                'Transport',
+                'Other'
+            ],
+            datasets: [{
+                label: 'My First Dataset',
+                data: [50, 100, 300],
+                backgroundColor: [
+                    'rgb(255, 205, 86)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 99, 132)'
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        const config = {
+            type: 'doughnut',
+            data: data,
+        };
+
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+</body>
+
+</html>
