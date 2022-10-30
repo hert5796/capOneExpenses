@@ -30,6 +30,7 @@ def default():
     ac_id = "01073771"
     return redirect(f"/{ac_id}")
 
+
 @app.route('/<account_id>')
 def check(account_id):
     ac = account.get_account(account_id)
@@ -42,11 +43,9 @@ def check(account_id):
 
     te_labels = ", ".join([t['category'] for t in te])
     te_amount = ", ".join([str(t['amount']) for t in te])
-    # te_values = [t[1] for t in te]
-
-    print(te_labels)
 
     return render_template('homepage.html', account=ac[0], transactions_by_day=tr, te_labels=te_labels, te_amount=te_amount)
+
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)

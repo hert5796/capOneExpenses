@@ -1,8 +1,8 @@
-from unicodedata import category
 from db.sdk.capOne import CapOne
 from db.sdk.helper import relative_day
 from datetime import datetime
 from json import loads
+from random import sample
 
 class Transaction(CapOne):
 
@@ -12,7 +12,10 @@ class Transaction(CapOne):
             params
         ).text
 
-        return loads(response)["Transactions"]
+        with open("./db/fake_data.json", "r") as f:
+            local = loads(f.read())["transactions"]
+
+        return loads(response)["Transactions"] + sample(local, 2)
 
     def create_transaction(self, account_id, quantity=1):
         response = self.post_request(
@@ -22,6 +25,15 @@ class Transaction(CapOne):
             }
         ).text
 
+        return response
+
+    def create_custom_transaction(self, account_id, transaction):
+        response = self.post_request(
+            f"https://sandbox.capitalone.co.uk/developer-services-platform-pr/api/data/transactions/accounts/{account_id}/create",
+            transaction
+        ).text
+
+        print("HHHHHHHH", response)
         return response
 
     def decorate_transactions(self, transactions):
