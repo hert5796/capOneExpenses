@@ -1,9 +1,10 @@
-# HackTheMidlands 7.0 - Table 3
+# CommonCents
 [🔗 Official website](https://hackthemidlands.com)
 
-This repository contains the hacked-together MVP for our attempt at tackling the challenge posed by hackathon sponsors - Capital One.
+This repository contains the hacked-together MVP of the CommonCents app for our attempt at tackling the challenge posed by hackathon sponsors - Capital One.
 
 Our misssion - which we've chosen to accept - is to develop a product that changes banking for good.
+
 
 ## Our team
 Although this hackathon is a first for many of us, and almost all of us are relatively new to programming, we know we'll give all the others a run for their money, and we'll have fun doing it too!
@@ -20,6 +21,8 @@ Our team members (in no particular order are):
 - Salamat
 - Aaron
 - Marcia
+
+### Communicate your spendings. Control your spendings. Listen to the CommonCents
 
 ## Our idea
 Special thanks to Ahmed & Michael for spawning the idea that we've gone on to evolve. In short...
