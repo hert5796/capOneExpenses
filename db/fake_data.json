@@ -5,7 +5,7 @@
             "accountUUID": "",
             "merchant": {
                 "name": "HackTheMidlands",
-                "category":  "Home “🏠”",
+                "category": "Home “🏠”",
                 "desription": "Hackathon Company"
             },
             "amount": "93.84",
@@ -20,23 +20,96 @@
             "pointOfSale": "Online"
         },
         {
-            "transactionUUID": "69---082761-2c4g-450b-90bb-5570cd76881e",
-            "accountUUID": "",
+            "transactionUUID": "29273748-4c3e-587b-34bb-68-6540as78991s",
+            "acountUUID": "27932320",
             "merchant": {
-                "name": "HackTheMidlands",
-                "category":  "Home “🏠”",
-                "desription": "Hackathon Company"
+                "name": "Michael Inc",
+                "category": "Bills & Utilities",
+                "description": "Credit Card Company",
+                "pointOfSale": [
+                    "Online"
+                ]
             },
-            "amount": "93.84",
+            "amount": 12.80,
             "creditDebitIndicator": "Credit",
             "currency": "GBP",
-            "timestamp": "2022-10-30 09:17:04",
-            "emoji": "💖",
-            "latitude": "-4.09472",
-            "longitude": "56.4975",
-            "status": "Success",
-            "message": "Romantic getaway to HackTheMidlands",
+            "timestamp": "2022-10-30 08:20:02",
+            "emoji": "🙂",
+            "latitude": -3.94000,
+            "Longitude": 53.9820,
+            "status": "Pending",
+            "message": "Netflix password sharing 💸",
             "pointOfSale": "Online"
+        },
+        {
+            "transactionUUID": "10202093-5c3f-697b-21bd-68-6990as34991s",
+            "acountUUID": "09212320",
+            "merchant": {
+                "name": "Octopus",
+                "category": "Bills & Utilities",
+                "description": "Checking Account",
+                "pointOfSale": [
+                    "Online"
+                ]
+
+            },
+            "amount": 180.20,
+            "creditDebitIndicator": "Debit",
+            "currency": "GBP",
+            "timestamp": "2022-10-30 09:21:05",
+            "emoji": "🙂",
+            "latitude": -3.94000,
+            "Longitude": 53.9820,
+            "status": "Completed",
+            "message": "Energy bill",
+            "pointOfSale":"Online"
+
+        },
+        {
+            "transactionUUID": "91202093-9c3f-697b-91bd-68-9990as99121s",
+            "acountUUID": "89212329",
+            "merchant": {
+                "name": "Tesco",
+                "category": "Groceries",
+                "description": "Checking Account",
+                "pointOfSale": [
+                    "Online"
+                ]
+
+            },
+            "amount": 40.20,
+            "creditDebitIndicator": "Debit",
+            "currency": "GBP",
+            "timestamp": "2022-10-30 11:21:05",
+            "emoji": "🙂",
+            "latitude": -3.94000,
+            "Longitude": 53.9820,
+            "status": "Completed",
+            "message": "Grocery",
+            "pointOfSale":"Offline"
+        },
+        {    
+            "transactionUUID": "99802093-4c3f-698b-21bd-68-1020ss39102d",
+            "acountUUID": "09212320",
+            "merchant": {
+                "name": "Esso",
+                "category": "Bills & Utilities",
+                "description": "Checking Account",
+                "pointOfSale": [
+                    "Offline"
+                ]
+
+            },
+            "amount": 80.20,
+            "creditDebitIndicator": "Debit",
+            "currency": "GBP",
+            "timestamp": "2022-10-30 09:21:05",
+            "emoji": "🙂",
+            "latitude": -3.94000,
+            "Longitude": 53.9820,
+            "status": "Completed",
+            "message": "Fuel",
+            "pointOfSale":"Offline"
         }
     ]
 }

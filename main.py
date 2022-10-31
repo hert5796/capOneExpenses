@@ -42,6 +42,8 @@ def check(account_id):
     tr = transaction.sort_transactions(tr)
 
     te_labels = ", ".join([t['category'] for t in te])
+
+    print(te_labels)
     te_amount = ", ".join([str(t['amount']) for t in te])
 
     return render_template('homepage.html', account=ac[0], transactions_by_day=tr, te_labels=te_labels, te_amount=te_amount)

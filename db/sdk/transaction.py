@@ -15,7 +15,7 @@ class Transaction(CapOne):
         with open("./db/fake_data.json", "r") as f:
             local = loads(f.read())["transactions"]
 
-        return loads(response)["Transactions"] + sample(local, 2)
+        return loads(response)["Transactions"] + sample(local, 3)
 
     def create_transaction(self, account_id, quantity=1):
         response = self.post_request(
