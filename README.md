@@ -5,6 +5,9 @@ This repository contains the hacked-together MVP of the CommonCents app for our 
 
 Our misssion - which we've chosen to accept - is to develop a product that changes banking for good.
 
+## UPDATE
+We won!!! The folks from Capital One liked our idea and execution, so, they named us as winners of their challenge 🎉
+![demo image](assets/demo.png)
 
 ## Our team
 Although this hackathon is a first for many of us, and almost all of us are relatively new to programming, we know we'll give all the others a run for their money, and we'll have fun doing it too!
